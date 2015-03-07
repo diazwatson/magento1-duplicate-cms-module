@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Diazwatson_Duplicatecms>
+            <version>0.1.0</version>
+        </Diazwatson_Duplicatecms>
+    </modules>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <cms_page_edit>Diazwatson_Duplicatecms_Block_Adminhtml_Cms_Page_Edit</cms_page_edit>
+                    <cms_block_edit>Diazwatson_Duplicatecms_Block_Adminhtml_Cms_Block_Edit</cms_block_edit>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Diazwatson_Duplicatecms before="Mage_Adminhtml">Diazwatson_Duplicatecms_Adminhtml</Diazwatson_Duplicatecms>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>
