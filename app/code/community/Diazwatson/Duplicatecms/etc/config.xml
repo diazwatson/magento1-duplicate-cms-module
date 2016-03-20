@@ -1,4 +1,14 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Diazwatson_Duplicatecms
+ *
+ * @category    Diazwatson
+ * @package     Diazwatson_Duplicatecms
+ * @Date        03/2015
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      @diazwatson
+ */-->
 <config>
     <modules>
         <Diazwatson_Duplicatecms>

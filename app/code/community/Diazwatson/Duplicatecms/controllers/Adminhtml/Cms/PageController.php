@@ -15,10 +15,10 @@ require_once('Mage/Adminhtml/controllers/Cms/PageController.php');
 
 class Diazwatson_Duplicatecms_Adminhtml_Cms_PageController extends Mage_Adminhtml_Cms_PageController
 {
+
     /**
      * @return bool
      */
-
     public function duplicateAction()
     {
         // Load page being duplicated by page_id param
@@ -38,7 +38,8 @@ class Diazwatson_Duplicatecms_Adminhtml_Cms_PageController extends Mage_Adminhtm
 
             // Update title and identifier to make them unique. Trim any
             // existing duplication info first.
-            $cmsPageData['title'] = preg_replace('~( - Duplicate \([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\))+$~i', '', $cmsPageData['title']);
+            $cmsPageData['title'] = preg_replace('~( - Duplicate \([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\))+$~i',
+                '', $cmsPageData['title']);
             $cmsPageData['identifier'] = preg_replace('~(-duplicate-[0-9]{14})+$~i', '', $cmsPageData['identifier']);
             $cmsPageData['title'] = $cmsPageData['title'] . ' - Duplicate (' . date('Y-m-d H:i:s') . ')';
             $cmsPageData['identifier'] = $cmsPageData['identifier'] . '-duplicate-' . date('YmdHis');
@@ -50,7 +51,7 @@ class Diazwatson_Duplicatecms_Adminhtml_Cms_PageController extends Mage_Adminhtm
             $this->_redirect(
                 '*/*/edit',
                 array(
-                    'page_id' => $duplicatePage->getId(),
+                    'page_id'  => $duplicatePage->getId(),
                     '_current' => true
                 )
             );

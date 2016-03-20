@@ -1,6 +1,6 @@
 # DuplicateCms
-Magento module to easy duplicate Cms Pages and Cms Blocks
+Magento 1.x module to easily  duplicate CMS Pages and Blocks
 
 
 ## How to use
-Install this module and then open any cms page or block, you will see an additional option to duplicate it.
+Install this module and then open any CMS Page or Block, you will see an additional option to duplicate it.

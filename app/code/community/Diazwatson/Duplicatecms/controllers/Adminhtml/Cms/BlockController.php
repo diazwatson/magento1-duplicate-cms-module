@@ -14,44 +14,51 @@ require_once('Mage/Adminhtml/controllers/Cms/BlockController.php');
 
 class Diazwatson_Duplicatecms_Adminhtml_Cms_BlockController extends Mage_Adminhtml_Cms_BlockController
 {
-	public function duplicateAction()
-	{
-		// Load block being duplicated by Block_id param
-		$params = $this->getRequest()->getParams();
-		$cmsBlock = Mage::getModel('cms/block')->load($params['block_id']);
-		if ($cmsBlock) {
 
-			// Create new Block
-			$duplicateBlock = Mage::getModel('cms/block');
+    /**
+     * Duplicate Action
+     *
+     * @return bool
+     */
+    public function duplicateAction()
+    {
+        // Load block being duplicated by Block_id param
+        $params = $this->getRequest()->getParams();
+        $cmsBlock = Mage::getModel('cms/block')->load($params['block_id']);
+        if ($cmsBlock) {
 
-			// Now we need to get the existing Block data to populate new object
-			$cmsBlockData = $cmsBlock->getData();
+            // Create new Block
+            $duplicateBlock = Mage::getModel('cms/block');
 
-			// We don't want to set the Block ID, otherwise we're just updating
-			// the original Block.
-			unset($cmsBlockData['block_id']);
+            // Now we need to get the existing Block data to populate new object
+            $cmsBlockData = $cmsBlock->getData();
 
-			// Update title and identifier to make them unique. Trim any
-			// existing duplication info first.
-			$cmsBlockData['title'] = preg_replace('~( - Duplicate \([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\))+$~i', '', $cmsBlockData['title']);
-			$cmsBlockData['identifier'] = preg_replace('~(-duplicate-[0-9]{14})+$~i', '', $cmsBlockData['identifier']);
-			$cmsBlockData['title'] = $cmsBlockData['title'] . ' - Duplicate (' . date('Y-m-d H:i:s') . ')';
-			$cmsBlockData['identifier'] = $cmsBlockData['identifier'] . '-duplicate-' . date('YmdHis');
+            // We don't want to set the Block ID, otherwise we're just updating
+            // the original Block.
+            unset($cmsBlockData['block_id']);
 
-			// Set data and save
-			$duplicateBlock->setData($cmsBlockData)->save();
+            // Update title and identifier to make them unique. Trim any
+            // existing duplication info first.
+            $cmsBlockData['title'] = preg_replace('~( - Duplicate \([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\))+$~i',
+                '', $cmsBlockData['title']);
+            $cmsBlockData['identifier'] = preg_replace('~(-duplicate-[0-9]{14})+$~i', '', $cmsBlockData['identifier']);
+            $cmsBlockData['title'] = $cmsBlockData['title'] . ' - Duplicate (' . date('Y-m-d H:i:s') . ')';
+            $cmsBlockData['identifier'] = $cmsBlockData['identifier'] . '-duplicate-' . date('YmdHis');
 
-			// Redirect to new Block
-			$this->_redirect(
-				'*/*/edit',
-				array(
-					'block_id' => $duplicateBlock->getId(),
-					'_current' => true
-				)
-			);
+            // Set data and save
+            $duplicateBlock->setData($cmsBlockData)->save();
 
-		}
+            // Redirect to new Block
+            $this->_redirect(
+                '*/*/edit',
+                array(
+                    'block_id' => $duplicateBlock->getId(),
+                    '_current' => true
+                )
+            );
 
-		return true;
-	}
+        }
+
+        return true;
+    }
 }
