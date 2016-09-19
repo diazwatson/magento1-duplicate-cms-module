@@ -11,11 +11,14 @@
 
 class Diazwatson_Duplicatecms_Block_Adminhtml_Cms_Page_Edit extends Mage_Adminhtml_Block_Cms_Page_Edit
 {
+
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         parent::__construct();
 
-        // Create a button labelled Duplicate of which when clicked will call our action.
         $this->_addButton(
             'duplicate',
             array(
@@ -27,6 +30,9 @@ class Diazwatson_Duplicatecms_Block_Adminhtml_Cms_Page_Edit extends Mage_Adminht
         );
     }
 
+    /**
+     * @return string
+     */
     protected function _getDuplicatePageUrl()
     {
         return $this->getUrl(

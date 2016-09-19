@@ -1,5 +1,5 @@
 # DuplicateCms
-Magento 1.x module to easily  duplicate CMS Pages and Blocks
+Magento 1.x module to easily duplicate CMS Pages and Blocks
 
 
 ## How to use

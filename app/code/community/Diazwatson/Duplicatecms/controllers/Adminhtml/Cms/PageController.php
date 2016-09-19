@@ -10,7 +10,6 @@
  * @author      @diazwatson
  */
 
-// Controllers are not autoloaded so we will have to do it manually:
 require_once('Mage/Adminhtml/controllers/Cms/PageController.php');
 
 class Diazwatson_Duplicatecms_Adminhtml_Cms_PageController extends Mage_Adminhtml_Cms_PageController

@@ -9,7 +9,6 @@
  * @author      @diazwatson
  */
 
-// Controllers are not autoloaded so we will have to do it manually:
 require_once('Mage/Adminhtml/controllers/Cms/BlockController.php');
 
 class Diazwatson_Duplicatecms_Adminhtml_Cms_BlockController extends Mage_Adminhtml_Cms_BlockController
